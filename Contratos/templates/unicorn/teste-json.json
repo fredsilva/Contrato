@@ -1,0 +1,5 @@
+[
+    {"id":1, "start":"2013-01-25T13:15:00.000+10:00", "end":"2013-25-10T14:15:30.000+10:00", "title":"Consulta Fred"},
+    {"id":2, "start":"2013-01-28T13:15:00.000+10:00", "title":"Consulta Lidiane","allDay":"true"}	
+]
+
