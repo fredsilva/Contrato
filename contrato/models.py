@@ -48,10 +48,8 @@ class Contrato(models.Model):
     unidadeSolicitante  = models.ForeignKey("UnidadeSolicitante")
     tipoContrato        = models.ForeignKey("TipoContrato")
     origem              = models.ForeignKey("Origem")
-    fiscal              = models.ForeignKey("Fiscal")
-    #fiscalSuplente      = models.ForeignKey("Fiscal")
-    #Fazer relacionamento entre Unidade Gestora, Contrato e Unidade Gestora/Contrato
-    #arquivo = models.FileField(upload_to=None[, height_field=None, width_field=None, max_length=100, **options])
+    fiscal              = models.ForeignKey("Fiscal")        
+    #arquivo             = models.FileField(upload_to=None[, height_field=None, width_field=None, max_length=100, **options])
         
 class TermoAditivo(models.Model):
     descricao = models.CharField(max_length = 50)
@@ -59,6 +57,16 @@ class TermoAditivo(models.Model):
     inicio    = models.DateField()
     fim       = models.DateField()
     contrato  = models.ForeignKey("Contrato")
+
+class UnidadeGestorasContrato(models.Model):
+    contrato       = models.ForeignKey("Contrato")
+    unidadeGestora = models.ForeignKey("UnidadeGestora")
+    valor          = models.DecimalField(max_digits=15, decimal_places=2)    
+    
+class InteressadosContrato(models.Model):
+    contrato    = models.ForeignKey("Contrato")
+    interessado = models.ForeignKey("Interessado")
+    percentual  = models.DecimalField(max_digits=3, decimal_places=2)
 
 class ModalidadeLicitacao(models.Model):
     modalidade = models.CharField(max_length = 50)
@@ -70,3 +78,9 @@ class Fiscal(models.Model):
     nome = models.CharField(max_length = 80)
     matricula = models.IntegerField()
     cargo     = models.ForeignKey("Cargo")
+    suplente = models.ForeignKey("FiscalSuplente")
+
+class FiscalSuplente(models.Model):
+    nome = models.CharField(max_length = 80)
+    matricula = models.IntegerField()
+    cargo     = models.ForeignKey("Cargo")    
