@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^relatorios/', 'contrato.views.relatorios', name='relatorios'),
     url(r'^unidadesgestoras/', 'contrato.views.unidadesgestoras', name='unidadesgestoras'),
     url(r'^unidadessolicitante/', 'contrato.views.unidadessolicitante', name='unidadessolicitante'),
+    url(r'^cargos/', 'contrato.views.cargos', name='cargos'),
 )

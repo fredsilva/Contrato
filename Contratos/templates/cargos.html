@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block graficos %}
+{% endblock %}
+{% block formulario %}
+<div class="widget-box">	
+	<div class="widget-box">
+		<div class="widget-title">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a data-toggle="tab" href="#tab1">Listagem</a>
+				</li>
+				<li>
+					<a data-toggle="tab" href="#tab2">Novo</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="widget-content tab-content">
+		<div id="tab1" class="tab-pane active">
+			<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-th"></i>
+								</span>
+								<h5>Cargos</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>Column name</th>
+											<th>Column name</th>
+											<th>Column name</th>
+											<th>Column name</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Row 1</td>
+											<td>Row 2</td>
+											<td>Row 3</td>
+											<td>Row 4</td>
+										</tr>
+										<tr>
+											<td>Row 1</td>
+											<td>Row 2</td>
+											<td>Row 3</td>
+											<td>Row 4</td>
+										</tr>
+										<tr>
+											<td>Row 1</td>
+											<td>Row 2</td>
+											<td>Row 3</td>
+											<td>Row 4</td>
+										</tr>
+										<tr>
+											<td>Row 1</td>
+											<td>Row 2</td>
+											<td>Row 3</td>
+											<td>Row 4</td>
+										</tr>
+										<tr>
+											<td>Row 1</td>
+											<td>Row 2</td>
+											<td>Row 3</td>
+											<td>Row 4</td>
+										</tr>
+										<tr>
+											<td>Row 1</td>
+											<td>Row 2</td>
+											<td>Row 3</td>
+											<td>Row 4</td>
+										</tr>
+									</tbody>
+								</table>							
+							</div>
+						</div>
+		</div>
+		<div id="tab2" class="tab-pane">
+			<div class="widget-content nopadding">
+				<form action="#" method="get" class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label">Normal text input</label>
+						<div class="controls">
+							<input type="text" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Password input</label>
+						<div class="controls">
+							<input type="password" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Input with description</label>
+						<div class="controls">
+							<input type="text" />
+							<span class="help-block">This is a description</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Input with placeholder</label>
+						<div class="controls">
+							<input type="text" placeholder="This is a placeholder..." />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Normal textarea</label>
+						<div class="controls">
+							<textarea></textarea>
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-success">
+							Save
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

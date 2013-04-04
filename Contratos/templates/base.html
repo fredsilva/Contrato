@@ -46,36 +46,13 @@
 				<li><a href="/relatorios/"><i class="icon icon-th-list"></i> <span>Relatórios</span></a></li>
 				<li><a href="/unidadesgestoras/"><i class="icon icon-cog"></i> <span>Unidade Gestora</span></a></li>
 				<li><a href="/unidadessolicitante/"><i class="icon icon-cog"></i> <span>Unidade Solicitante</span></a></li>				
-				<li><a href="/usuarios/"><i class="icon icon-user"></i> <span>Usuários</span></a></li>
-				<!--
-				<li class="submenu">
-					<a href="#"><i class="icon icon-file"></i> <span>Cadastros</span> <span class="label">4</span></a>
-					<ul>
-						<li><a href="invoice.html">Paciente</a></li>
-						<li><a href="chat.html">Dentista</a></li>
-						<li><a href="chat.html">Funcionário</a></li>
-						<li><a href="calendar.html">Usuário</a></li>						
-					</ul>
-				</li>
-				<li class="submenu">
-					<a href="#"><i class="icon icon-signal"></i> <span>Financeiro</span> <span class="label">4</span></a>
-					<ul>
-						<li><a href="invoice.html">Caixa</a></li>
-						<li><a href="chat.html">Contas a Pagar</a></li>
-						<li><a href="chat.html">Contas a Receber</a></li>
-						<li><a href="calendar.html">Gráficos</a></li>						
-					</ul>
-				</li>				
-				<li>
-					<a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a>
-				</li>
-				-->
+				<li><a href="/usuarios/"><i class="icon icon-user"></i> <span>Usuários</span></a></li>				
 			</ul>		
 		</div>		
 		{% endblock %}
 		<div id="content">
 			<div id="content-header">
-				<h1>Home</h1>
+				<h1>{{ nomePagina }}</h1>
 				<div class="btn-group">
 					<a class="btn btn-large tip-bottom" title="Novo Contrato"><i class="icon-file"></i></a>
 					<a class="btn btn-large tip-bottom" title="Perfil de Usuário"><i class="icon-user"></i></a>
@@ -85,13 +62,15 @@
 			</div>
 			{% block breadcrumb %}
 			<div id="breadcrumb">
-				<a href="/" title="Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-				<a href="/" class="current">{{ nomePagina }}</a>
+				<a href="/" title="Home" class="tip-bottom"><i class="icon-home"></i>Home</a>
+				{% if nomePagina != "Home" %}									
+					<a href="/" class="current">{{ nomePagina }}</a>
+				{% endif %}				
 			</div>
-			{% endblock %}
-			{% block graficos %}
+			{% endblock %}			
 			<div class="container-fluid">
 				<div class="row-fluid">
+					{% block graficos %}
 					<div class="span12 center" style="text-align: center;">					
 						<ul class="stat-boxes">
 							<li>
@@ -116,7 +95,10 @@
 								</div>
 							</li>
 						</ul>
-					</div>	
+					</div>
+					{% endblock %}	
+					{% block formulario %}
+					{% endblock %}
 				</div>					
 				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>				
 				<div class="row-fluid">
@@ -124,7 +106,7 @@
 						2013 &copy; Secretaria da Fazenda do Estado do Tocantins</a>
 					</div>
 				</div>
-				{% endblock %}
+				
 			</div>
 		</div>
 			{% block rodape %}
