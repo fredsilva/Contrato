@@ -2,7 +2,7 @@
 {% block graficos %}
 {% endblock %}
 {% block formulario %}
-<div class="widget-box">	
+<div class="widget-box">
 	<div class="widget-box">
 		<div class="widget-title">
 			<ul class="nav nav-tabs">
@@ -18,104 +18,45 @@
 	<div class="widget-content tab-content">
 		<div id="tab1" class="tab-pane active">
 			<div class="widget-box">
-							<div class="widget-title">
-								<span class="icon">
-									<i class="icon-th"></i>
-								</span>
-								<h5>Cargos</h5>
-							</div>
-							<div class="widget-content nopadding">
-								<table class="table table-bordered table-striped">
-									<thead>
-										<tr>
-											<th>Column name</th>
-											<th>Column name</th>
-											<th>Column name</th>
-											<th>Column name</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Row 1</td>
-											<td>Row 2</td>
-											<td>Row 3</td>
-											<td>Row 4</td>
-										</tr>
-										<tr>
-											<td>Row 1</td>
-											<td>Row 2</td>
-											<td>Row 3</td>
-											<td>Row 4</td>
-										</tr>
-										<tr>
-											<td>Row 1</td>
-											<td>Row 2</td>
-											<td>Row 3</td>
-											<td>Row 4</td>
-										</tr>
-										<tr>
-											<td>Row 1</td>
-											<td>Row 2</td>
-											<td>Row 3</td>
-											<td>Row 4</td>
-										</tr>
-										<tr>
-											<td>Row 1</td>
-											<td>Row 2</td>
-											<td>Row 3</td>
-											<td>Row 4</td>
-										</tr>
-										<tr>
-											<td>Row 1</td>
-											<td>Row 2</td>
-											<td>Row 3</td>
-											<td>Row 4</td>
-										</tr>
-									</tbody>
-								</table>							
-							</div>
-						</div>
+				<div class="widget-title">
+					<span class="icon"> <i class="icon-th"></i> </span>
+					<h5>Cargos</h5>
+				</div>
+				<div class="widget-content nopadding">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Cargo</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for cargo in cargos %}
+							<tr>
+								<td>{{ cargo.id }}</td>
+								<td>{{ cargo.nome }}</td>
+								<td><a href="#" class="tip-top" data-original-title="Alterar"><i class="icon-ok"></i></a></td>
+								<td><a href="#" class="tip-top" data-original-title="Excluir"><i class="icon-remove"></i></a></td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 		<div id="tab2" class="tab-pane">
 			<div class="widget-content nopadding">
-				<form action="#" method="get" class="form-horizontal">
-					<div class="control-group">
-						<label class="control-label">Normal text input</label>
-						<div class="controls">
-							<input type="text" />
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">Password input</label>
-						<div class="controls">
-							<input type="password" />
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">Input with description</label>
-						<div class="controls">
-							<input type="text" />
-							<span class="help-block">This is a description</span>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">Input with placeholder</label>
-						<div class="controls">
-							<input type="text" placeholder="This is a placeholder..." />
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">Normal textarea</label>
-						<div class="controls">
-							<textarea></textarea>
-						</div>
-					</div>
-					<div class="form-actions">
+				<div class="form-actions">
+					<form action="" method="post" class="form-horizontal">
+						{% csrf_token %}
+						{{ form.as_p }}
 						<button type="submit" class="btn btn-success">
-							Save
+							Salvar
 						</button>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

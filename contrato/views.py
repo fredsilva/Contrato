@@ -2,6 +2,8 @@
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from contrato.forms import FormCargo
+from contrato.models import Cargo
 
 def home(request):    
     nomePagina = "Home"
@@ -40,6 +42,15 @@ def unidadessolicitante(request):
 
 def cargos(request):
     nomePagina = "Cargos"
-    titulo  = "Cargos"    
-    
-    return render_to_response("cargos.html",{'titulo': titulo, 'nomePagina': nomePagina}, context_instance = RequestContext(request))
+    titulo  = "Cargos"     
+    if request.method == "POST":
+        form = FormCargo(request.POST, request.FILES)
+        if form.is_valid():
+            dados = form.cleaned_data
+            cargo = Cargo(nome = dados['nome'])
+            cargo.save()            
+            return render_to_response("sucesso.html",{}, context_instance = RequestContext(request))
+    else:   
+        form = FormCargo()
+        cargos = Cargo.objects.all()
+    return render_to_response("cargos.html",{'titulo': titulo, 'nomePagina': nomePagina, 'form': form, 'cargos': cargos}, context_instance = RequestContext(request))
