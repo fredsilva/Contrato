@@ -2,7 +2,7 @@
 from django.db import models
 
 class Cargo(models.Model):
-    nome = models.CharField(max_length = 50)
+    nome = models.CharField(max_length = 50, unique = True)
 
 class Gestor(models.Model):
     nome  = models.CharField(max_length = 80)

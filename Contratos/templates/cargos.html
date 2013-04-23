@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block graficos %}
+	{% if mensagem != None %}
+		<div class="alert alert-info">
+			{{ mensagem }}
+		<a href="#" data-dismiss="alert" class="close">×</a>
+		</div>
+	{% endif %}
 {% endblock %}
 {% block formulario %}
 <div class="widget-box">

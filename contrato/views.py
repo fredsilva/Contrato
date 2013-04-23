@@ -43,13 +43,16 @@ def unidadessolicitante(request):
 def cargos(request):
     nomePagina = "Cargos"
     titulo  = "Cargos"     
+    mensagem = None
     if request.method == "POST":
         form = FormCargo(request.POST, request.FILES)
         if form.is_valid():
+            mensagem = "Cargo cadastrado com sucesso!"
             dados = form.cleaned_data
             cargo = Cargo(nome = dados['nome'])
             cargo.save()            
-            return render_to_response("sucesso.html",{}, context_instance = RequestContext(request))
+            cargos = Cargo.objects.all()
+            return render_to_response("cargos.html",{'mensagem':mensagem, 'cargos': cargos}, context_instance = RequestContext(request))
     else:   
         form = FormCargo()
         cargos = Cargo.objects.all()
