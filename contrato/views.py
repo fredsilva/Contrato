@@ -2,6 +2,7 @@
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.db import IntegrityError
 from contrato.forms import FormCargo
 from contrato.models import Cargo
 
@@ -44,15 +45,24 @@ def cargos(request):
     nomePagina = "Cargos"
     titulo  = "Cargos"     
     mensagem = None
+    erro = False
     if request.method == "POST":
         form = FormCargo(request.POST, request.FILES)
         if form.is_valid():
             mensagem = "Cargo cadastrado com sucesso!"
             dados = form.cleaned_data
             cargo = Cargo(nome = dados['nome'])
-            cargo.save()            
             cargos = Cargo.objects.all()
-            return render_to_response("cargos.html",{'mensagem':mensagem, 'cargos': cargos}, context_instance = RequestContext(request))
+            try:
+                cargo.save()            
+                form = FormCargo()
+                return render_to_response("cargos.html",{'mensagem':mensagem, 'erro':erro, 'cargos': cargos, 'form':form}, context_instance = RequestContext(request))
+            except IntegrityError, e:                
+                erro = True
+                e.message = "Registro já existe no banco de dados"
+                mensagem = e.message
+                form = FormCargo()
+                return render_to_response("cargos.html",{'mensagem':mensagem, 'erro':erro, 'cargos': cargos, 'form':form}, context_instance = RequestContext(request))  
     else:   
         form = FormCargo()
         cargos = Cargo.objects.all()
